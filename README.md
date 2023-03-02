@@ -5,6 +5,9 @@
   <img src="./images/image 1.svg" width="500" height="400">
 </div>
 
+[Acesse o Projeto](https://allesoares95.github.io/midi-bateria/)
+
+
   ## Estudando JavaScript
     Nesse projeto será utilizado JavaScript para que a pagina web transmita sons 
 

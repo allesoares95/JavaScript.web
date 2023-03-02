@@ -1,19 +1,31 @@
-function playMidi(idElement) {
-  document.querySelector(idElement).play();
+function playMidi(selectElement) {
+  const element = document.querySelector(selectElement);
+
+  if (element != null && element.localName === 'audio') {
+    element.play();
+  } else {
+    alert('Elemento não encontrado ou seletor inválido !');
+  }
 }
 
 const listMidi = document.querySelectorAll('.tecla');
-let counter = 0;
 
-while (counter < listMidi.length) {
+for (let counter = 0; counter < listMidi.length; counter++) {
   const key = listMidi[counter];
   const instrument = key.classList[1];
-  // template string
-  const idAudio = `#som_${instrument}`;
+  const idAudio = `#som_${instrument}`; // template string
 
-  key.onclick = function() {
+  key.onclick = function () {
     playMidi(idAudio);
   };
 
-  counter = counter + 1;
+  key.onkeydown = function (event) {
+    if (event.code === 'Space' || event.code === 'Enter') {
+      key.classList.add('ativa');
+    }
+  };
+
+  key.onkeyup = function () {
+    key.classList.remove('ativa'); // remove
+  };
 }
